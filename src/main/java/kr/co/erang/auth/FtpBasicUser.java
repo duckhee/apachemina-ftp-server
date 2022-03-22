@@ -11,4 +11,6 @@ public class FtpBasicUser extends BaseUser {
     private FtpUser user;
 
 
+
+
 }

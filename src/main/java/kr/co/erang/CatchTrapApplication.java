@@ -21,8 +21,8 @@ public class CatchTrapApplication {
 
 
     public static void main(String[] args) throws UnknownHostException, FtpException {
-//        SpringApplication.run(CatchTrapApplication.class, args);
-        FTPServerModule.instance().startModule();
+        SpringApplication.run(CatchTrapApplication.class, args);
+//        FTPServerModule.instance().startModule();
     }
 
 }

@@ -5,56 +5,25 @@ import kr.co.erang.user.domain.UserDomain;
 import kr.co.erang.user.persistence.UserPersistence;
 import lombok.RequiredArgsConstructor;
 import org.apache.ftpserver.ftplet.*;
+import org.apache.ftpserver.usermanager.PasswordEncryptor;
+import org.apache.ftpserver.usermanager.impl.DbUserManager;
 import org.springframework.stereotype.Component;
+
+import javax.sql.DataSource;
 
 /**
  * Ftp User Login using this
  */
-@Component
-@RequiredArgsConstructor
-public class DBUserManager implements UserManager {
+public class DBUserManager extends DbUserManager {
 
-    private final UserPersistence userPersistence;
+    private static final String SELECT_ALL_USER = "";
+    private static final String SELECT_USER = "";
+    private static final String INSERT_USER = "";
+    private static final String UPDATED_USER = "";
+    private static final String DELETED_USER = "";
 
-    @Override
-    public User getUserByName(String username) throws FtpException {
-        UserDomain findUser = userPersistence.findByUserId(username).orElse(null);
-        return new FtpUser(findUser);
-    }
 
-    @Override
-    public String[] getAllUserNames() throws FtpException {
-        return new String[0];
-    }
-
-    @Override
-    public void delete(String username) throws FtpException {
-
-    }
-
-    @Override
-    public void save(User user) throws FtpException {
-
-    }
-
-    @Override
-    public boolean doesExist(String username) throws FtpException {
-        return userPersistence.existsByUserId(username);
-    }
-
-    @Override
-    public User authenticate(Authentication authentication) throws AuthenticationFailedException {
-
-        return null;
-    }
-
-    @Override
-    public String getAdminName() throws FtpException {
-        return null;
-    }
-
-    @Override
-    public boolean isAdmin(String username) throws FtpException {
-        return false;
+    public DBUserManager(DataSource dataSource, String selectAllStmt, String selectUserStmt, String insertUserStmt, String updateUserStmt, String deleteUserStmt, String authenticateStmt, String isAdminStmt, PasswordEncryptor passwordEncryptor, String adminName) {
+        super(dataSource, selectAllStmt, selectUserStmt, insertUserStmt, updateUserStmt, deleteUserStmt, authenticateStmt, isAdminStmt, passwordEncryptor, adminName);
     }
 }

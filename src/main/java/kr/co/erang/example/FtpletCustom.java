@@ -16,6 +16,7 @@ public class FtpletCustom extends DefaultFtplet {
         this.userManager = userManager;
     }
 
+/*
 
     public FtpletResult beforeCommand(FtpSession session, FtpRequest request)
             throws FtpException, IOException {
@@ -39,16 +40,7 @@ public class FtpletCustom extends DefaultFtplet {
             return onRenameStart(session, request);
         } else if ("SITE".equals(command)) {
             return onSite(session, request);
-        } else if("USER".equals(command)){
-            log.info("get getArgument ::: {}", request.getArgument());
-            log.info("get getRequestLine ::: {}", request.getRequestLine());
-            log.info("get user ::: {}", session.getUser());
-            return null;
-        }else if("PASS".equals(command)){
-            log.info("get getArgument ::: {}", request.getArgument());
-            log.info("get getRequestLine ::: {}", request.getRequestLine());
-            return null;
-        }else {
+        } else {
             // TODO should we call a catch all?
             return null;
         }
@@ -85,6 +77,7 @@ public class FtpletCustom extends DefaultFtplet {
             return null;
         }
     }
+*/
 
 
     @Override

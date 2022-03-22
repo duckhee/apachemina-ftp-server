@@ -113,7 +113,7 @@ public class FTPConfig {
         // ftp server factory
         FtpServerFactory ftpServerFactory = ftpServerFactory();
         // ftp server setting user manager
-        ftpServerFactory.setUserManager(new DBUserManager(userPersistence));
+//        ftpServerFactory.setUserManager(new DBUserManager());
         // ftp server setting config
         ftpServerFactory.setConnectionConfig(connectionConfigFactory.createConnectionConfig());
         // registe listener

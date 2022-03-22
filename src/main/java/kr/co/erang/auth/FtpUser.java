@@ -7,8 +7,11 @@ import org.apache.ftpserver.ftplet.AuthorizationRequest;
 import org.apache.ftpserver.ftplet.User;
 import org.apache.ftpserver.usermanager.UsernamePasswordAuthentication;
 import org.apache.ftpserver.usermanager.impl.UserMetadata;
+import org.apache.ftpserver.usermanager.impl.WritePermission;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Getter
@@ -17,7 +20,7 @@ public class FtpUser implements User {
 
     private UserDomain user;
 
-    public FtpUser(UserDomain user){
+    public FtpUser(UserDomain user) {
         this.user = user;
     }
 
@@ -36,9 +39,11 @@ public class FtpUser implements User {
         return null;
     }
 
+    // setting permission
     @Override
     public List<? extends Authority> getAuthorities(Class<? extends Authority> aClass) {
-        return null;
+        return user != null ? List.of(new WritePermission()) : null;
+
     }
 
     @Override
