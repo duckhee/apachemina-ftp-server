@@ -191,18 +191,18 @@ public class FTPServerModule {
   private User createUser(String username, String password) {
     String dirUser = FTPSERVER_USER_FOLDER + "/" + username;
     File dir = new File(dirUser);
-    if (dir.exists()) {
+    /*if (dir.exists()) {
       try {
         FileUtils.cleanDirectory(dir);
       } catch (IOException e) {
         log.info(String.format("Can't empty the directory " + dirUser));
       }
-    } else {
+    } else {*/
       if (!dir.mkdirs()) {
         log.info(String.format("Can't create user directory (%s). The user (%s) can't send files to FTP Server.", dirUser, username));
         return null;
       }
-    }
+    /*}*/
 
     List<Authority> authorities = new ArrayList<>();
     authorities.add(new WritePermission());

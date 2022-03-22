@@ -9,6 +9,7 @@ import org.apache.ftpserver.ftplet.Authentication;
 import org.apache.ftpserver.ftplet.AuthenticationFailedException;
 import org.apache.ftpserver.ftplet.FtpException;
 import org.apache.ftpserver.ftplet.User;
+import org.apache.ftpserver.usermanager.PasswordEncryptor;
 import org.apache.ftpserver.usermanager.impl.AbstractUserManager;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +22,9 @@ public class FtpUserManager extends AbstractUserManager {
 
     // get user persistence
     private final UserPersistence userPersistence;
+    private final PasswordEncryptor passwordEncryptor;
+
+
 
     @Override
     public User getUserByName(String s) throws FtpException {
